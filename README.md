@@ -34,6 +34,18 @@ java --version
 
 ## Ejecutar el backend Quarkus
 
+Antes del primer inicio, genera un par de claves JWT local. Las claves no se incluyen en el repositorio:
+
+```bash
+openssl genrsa -out quarkus-api/src/main/resources/rsa.pem 2048
+openssl pkcs8 -topk8 -nocrypt -inform PEM \
+  -in quarkus-api/src/main/resources/rsa.pem \
+  -out quarkus-api/src/main/resources/privateKey.pem
+openssl rsa -in quarkus-api/src/main/resources/rsa.pem -pubout \
+  -out quarkus-api/src/main/resources/publicKey.pem
+rm quarkus-api/src/main/resources/rsa.pem
+```
+
 Desde `quarkus-api/`:
 
 ```bash

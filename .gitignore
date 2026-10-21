@@ -1,0 +1,15 @@
+# Dependencies and generated build output
+**/node_modules/
+**/.angular/
+**/dist/
+**/target/
+
+# Local IDE state
+**/.idea/
+.vscode/
+
+# Local credentials and environment overrides
+.env
+.env.*
+*.pem
+*.key
