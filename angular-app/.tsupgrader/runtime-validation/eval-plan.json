@@ -1,0 +1,40 @@
+{
+  "projectType": "webapp",
+  "setup": [
+    {
+      "command": "npm",
+      "args": ["install", "--no-package-lock"],
+      "timeoutSeconds": 600
+    }
+  ],
+  "assertions": [
+    {
+      "name": "build-passes",
+      "kind": "process",
+      "command": "npm",
+      "args": ["run", "build"],
+      "verificationMethod": "exit-code",
+      "expected": "0",
+      "timeoutSeconds": 300
+    },
+    {
+      "name": "home-page-serves",
+      "kind": "http-probe",
+      "startCommand": "npm",
+      "startArgs": ["start", "--", "--host", "127.0.0.1"],
+      "url": "http://127.0.0.1:4200/",
+      "verificationMethod": "http-status",
+      "expected": "200",
+      "timeoutSeconds": 120
+    },
+    {
+      "name": "tests-pass",
+      "kind": "process",
+      "command": "npm",
+      "args": ["test"],
+      "verificationMethod": "test-results",
+      "expected": "0",
+      "timeoutSeconds": 300
+    }
+  ]
+}

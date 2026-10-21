@@ -1,0 +1,80 @@
+{
+  "hash": "43c81417",
+  "configHash": "49719206",
+  "lockfileHash": "f3a6fa39",
+  "browserHash": "a28fc464",
+  "optimized": {
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "97d2e236",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "08d2c0e0",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "9d19c7e9",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "fb350281",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "4f3277e0",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "ccc202ca",
+      "needsInterop": false
+    },
+    "zone.js": {
+      "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
+      "file": "zone__js.js",
+      "fileHash": "2da71665",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "_platform_location-chunk-CxBvulvC": {
+      "file": "_platform_location-chunk-CxBvulvC.js",
+      "isDynamicEntry": false
+    },
+    "common-8tFATV_P": {
+      "file": "common-8tFATV_P.js",
+      "isDynamicEntry": false
+    },
+    "core-CBlqqKbM": {
+      "file": "core-CBlqqKbM.js",
+      "isDynamicEntry": false
+    },
+    "esm5-DYNb5pjm": {
+      "file": "esm5-DYNb5pjm.js",
+      "isDynamicEntry": false
+    },
+    "http-DDAnZaKZ": {
+      "file": "http-DDAnZaKZ.js",
+      "isDynamicEntry": false
+    },
+    "objectSpread2-weooBxVk": {
+      "file": "objectSpread2-weooBxVk.js",
+      "isDynamicEntry": false
+    },
+    "platform-browser-Blq7G5M2": {
+      "file": "platform-browser-Blq7G5M2.js",
+      "isDynamicEntry": false
+    }
+  }
+}

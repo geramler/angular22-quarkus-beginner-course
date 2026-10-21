@@ -1,0 +1,159 @@
+{
+  "planHash": "0968ac6d6fbea15f45b5874a99f3e044a4e7060599f008fcc7b8cfadb5823e28",
+  "phase": "standalone",
+  "recordedAtUtc": "2026-10-21T16:52:59.2064191Z",
+  "retryCount": 2,
+  "resetBaseline": false,
+  "complete": true,
+  "result": {
+    "setupSucceeded": true,
+    "setupDurationMs": 7535,
+    "setupFailureOutput": null,
+    "assertions": [
+      {
+        "name": "build-passes",
+        "kind": "process",
+        "verificationMethod": "exit-code",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": 0,
+        "outputSample": "npm warn Unknown env config \u0022scripts-prepend-node-path\u0022. This will stop working in the next major version of npm. See \u0060npm help npmrc\u0060 for supported config options.\n\n\u003E angular22-policies-app@1.0.0 build\n\u003E ng build\n\n\u276F Building...\n\u2714 Building...\nInitial chunk files | Names         |  Raw size\nmain.js             | main          |   1.22 MB | \npolyfills.js        | polyfills     |  89.64 kB | \nstyles.css          | styles        | 613 bytes | \n\n                    | Initial total |   1.32 MB\n\nApplication bundle generation complete. [1.877 seconds] - 2026-10-21T16:52:52.222Z\n\nOutput location: /home/gerardo/VSCodeProjects/angular22-springboot-beginner-course/angular-app/dist/policies-app\n\n",
+        "durationMs": 2960
+      },
+      {
+        "name": "home-page-serves",
+        "kind": "http-probe",
+        "verificationMethod": "http-status",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": null,
+        "outputSample": "HTTP 200\n\u003C!doctype html\u003E\n\u003Chtml lang=\u0022es\u0022\u003E\n\u003Chead\u003E\n  \u003Cscript type=\u0022module\u0022 src=\u0022/@vite/client\u0022\u003E\u003C/script\u003E\n\n  \u003Cmeta charset=\u0022utf-8\u0022\u003E\n  \u003Ctitle\u003EGesti\u00F3n de p\u00F3lizas\u003C/title\u003E\n  \u003Cbase href=\u0022/\u0022\u003E\n  \u003Cmeta name=\u0022viewport\u0022 content=\u0022width=device-width, initial-scale=1\u0022\u003E\n\u003Clink rel=\u0022stylesheet\u0022 href=\u0022styles.css\u0022\u003E\u003C/head\u003E\n\u003Cbody\u003E\n  \u003Capp-root\u003E\u003C/app-root\u003E\n\u003Cscript src=\u0022polyfills.js\u0022 type=\u0022module\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022main.js\u0022 type=\u0022module\u0022\u003E\u003C/script\u003E\u003C/body\u003E\n\u003C/html\u003E\n\n--- server output ---\nnpm warn Unknown env config \u0022scripts-prepend-node-path\u0022. This will stop working in the next major version of npm. See \u0060npm help npmrc\u0060 for supported config options.\n\n\u003E angular22-policies-app@1.0.0 start\n\u003E ng serve --host 127.0.0.1\n\n\u276F Building...\n\u2714 Building...\nInitial chunk files | Names         |  Raw size\nmain.js             | main          |   7.67 kB | \nstyles.css          | styles        | 613 bytes | \npolyfills.js        | polyfills     | 144 bytes | \n\n                    | Initial total |   8.43 kB\n\nApplication bundle generation complete. [1.339 seconds] - 2026-10-21T16:52:54.706Z\n\nWatch mode enabled. Watching for file changes...\nNOTE: Raw file sizes do not reflect development server per-request transformations.\n  \u279C  Local:   http://127.0.0.1:4200/\n",
+        "durationMs": 2965
+      },
+      {
+        "name": "tests-pass",
+        "kind": "process",
+        "verificationMethod": "test-results",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": 0,
+        "outputSample": "npm warn Unknown env config \u0022scripts-prepend-node-path\u0022. This will stop working in the next major version of npm. See \u0060npm help npmrc\u0060 for supported config options.\n\n\u003E angular22-policies-app@1.0.0 test\n\u003E ng test\n\n\u276F Building...\n\u2714 Building...\nApplication bundle generation complete. [1.448 seconds] - 2026-10-21T16:52:57.596Z\n\n\n\u001B[1m\u001B[30m\u001B[46m RUN \u001B[49m\u001B[39m\u001B[22m \u001B[36mv5.0.5 \u001B[39m\u001B[90m/home/gerardo/VSCodeProjects/angular22-springboot-beginner-course/angular-app\u001B[39m\n\n\n\u001B[2m Test Files \u001B[22m \u001B[1m\u001B[32m1 passed\u001B[39m\u001B[22m\u001B[90m (1)\u001B[39m\n\u001B[2m      Tests \u001B[22m \u001B[1m\u001B[32m1 passed\u001B[39m\u001B[22m\u001B[90m (1)\u001B[39m\n\u001B[2m   Start at \u001B[22m 10:52:57\n\u001B[2m   Duration \u001B[22m 1.05s\u001B[2m (environment 55%, setup 30%, transform 7%, tests 6%, import 2%, worker 1%)\u001B[22m\n\n",
+        "durationMs": 3746,
+        "testResults": {
+          "testFramework": "vitest",
+          "runnerDetectedFrom": "package_json",
+          "testsTotal": 1,
+          "testsPassed": 1,
+          "testsFailed": 0,
+          "testsSkipped": 0,
+          "parseFailed": false
+        }
+      }
+    ],
+    "executions": [
+      {
+        "source": "setup[0]",
+        "resolvedExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/npm",
+        "args": [
+          "install",
+          "--no-package-lock"
+        ],
+        "cwd": "/home/gerardo/VSCodeProjects/angular22-springboot-beginner-course/angular-app",
+        "env": {},
+        "prependPath": [],
+        "platform": "linux",
+        "nodeExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/node",
+        "nodeVersion": "v24.22.0",
+        "packageManager": "npm",
+        "packageManagerExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/npm",
+        "packageManagerVersion": "11.19.1",
+        "cleanup": {
+          "RootProcessId": 86475,
+          "Completed": true,
+          "ProcessesObserved": 1,
+          "ProcessesTerminated": 0,
+          "Failure": null
+        }
+      },
+      {
+        "source": "build-passes",
+        "resolvedExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/npm",
+        "args": [
+          "run",
+          "build"
+        ],
+        "cwd": "/home/gerardo/VSCodeProjects/angular22-springboot-beginner-course/angular-app",
+        "env": {},
+        "prependPath": [],
+        "platform": "linux",
+        "nodeExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/node",
+        "nodeVersion": "v24.22.0",
+        "packageManager": "npm",
+        "packageManagerExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/npm",
+        "packageManagerVersion": "11.19.1",
+        "cleanup": {
+          "RootProcessId": 86710,
+          "Completed": true,
+          "ProcessesObserved": 1,
+          "ProcessesTerminated": 0,
+          "Failure": null
+        }
+      },
+      {
+        "source": "home-page-serves",
+        "resolvedExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/npm",
+        "args": [
+          "start",
+          "--",
+          "--host",
+          "127.0.0.1"
+        ],
+        "cwd": "/home/gerardo/VSCodeProjects/angular22-springboot-beginner-course/angular-app",
+        "env": {},
+        "prependPath": [],
+        "platform": "linux",
+        "nodeExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/node",
+        "nodeVersion": "v24.22.0",
+        "packageManager": "npm",
+        "packageManagerExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/npm",
+        "packageManagerVersion": "11.19.1",
+        "cleanup": {
+          "RootProcessId": 88330,
+          "Completed": true,
+          "ProcessesObserved": 1,
+          "ProcessesTerminated": 1,
+          "Failure": null
+        }
+      },
+      {
+        "source": "tests-pass",
+        "resolvedExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/npm",
+        "args": [
+          "test"
+        ],
+        "cwd": "/home/gerardo/VSCodeProjects/angular22-springboot-beginner-course/angular-app",
+        "env": {},
+        "prependPath": [],
+        "platform": "linux",
+        "nodeExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/node",
+        "nodeVersion": "v24.22.0",
+        "packageManager": "npm",
+        "packageManagerExecutable": "/home/gerardo/.nvm/versions/node/v24.22.0/bin/npm",
+        "packageManagerVersion": "11.19.1",
+        "cleanup": {
+          "RootProcessId": 88430,
+          "Completed": true,
+          "ProcessesObserved": 1,
+          "ProcessesTerminated": 0,
+          "Failure": null
+        }
+      }
+    ]
+  }
+}

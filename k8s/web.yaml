@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: policies-web
+  namespace: policies
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: policies-web }
+  template:
+    metadata:
+      labels: { app: policies-web }
+    spec:
+      containers:
+        - name: web
+          image: policies-web:1.0.0
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet: { path: /, port: 8080 }
+          resources:
+            requests: { cpu: 50m, memory: 32Mi }
+            limits: { memory: 128Mi }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: policies-web
+  namespace: policies
+spec:
+  selector: { app: policies-web }
+  ports:
+    - port: 80
+      targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: policies
+  namespace: policies
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts: [policies.example.com]
+      secretName: policies-tls
+  rules:
+    - host: policies.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service: { name: policies-web, port: { number: 80 } }

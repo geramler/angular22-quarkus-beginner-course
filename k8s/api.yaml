@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: policies-api-config
+  namespace: policies
+data:
+  DB_URL: jdbc:postgresql://postgres:5432/policies
+  CORS_ORIGINS: https://policies.example.com
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: policies-api
+  namespace: policies
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: policies-api }
+  template:
+    metadata:
+      labels: { app: policies-api }
+    spec:
+      securityContext:
+        runAsUser: 10001
+        fsGroup: 10001
+      containers:
+        - name: api
+          image: policies-api:0.0.1
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef: { name: policies-api-config }
+          env:
+            - name: DB_USERNAME
+              valueFrom: { secretKeyRef: { name: policies-db, key: username } }
+            - name: DB_PASSWORD
+              valueFrom: { secretKeyRef: { name: policies-db, key: password } }
+            - name: APP_AUTH_ADMIN_PASSWORD
+              valueFrom: { secretKeyRef: { name: policies-auth, key: admin-password } }
+            - name: APP_AUTH_USER_PASSWORD
+              valueFrom: { secretKeyRef: { name: policies-auth, key: user-password } }
+          readinessProbe:
+            httpGet: { path: /q/health/ready, port: 8080 }
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /q/health/live, port: 8080 }
+            initialDelaySeconds: 20
+            periodSeconds: 20
+          resources:
+            requests: { cpu: 100m, memory: 256Mi }
+            limits: { memory: 512Mi }
+          volumeMounts:
+            - name: jwt-keys
+              mountPath: /keys
+              readOnly: true
+      volumes:
+        - name: jwt-keys
+          secret:
+            secretName: policies-jwt-keys
+            defaultMode: 0440
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: policies-api
+  namespace: policies
+spec:
+  selector: { app: policies-api }
+  ports:
+    - port: 8080
+      targetPort: 8080

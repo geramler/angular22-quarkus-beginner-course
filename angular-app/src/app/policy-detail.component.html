@@ -1,0 +1,23 @@
+@if (loading()) {
+  <p aria-live="polite">Cargando detalle...</p>
+} @else if (error()) {
+  <p role="alert">{{ error() }}</p>
+} @else if (policy(); as item) {
+  <section class="detail" aria-label="Detalle de póliza">
+    <h2>Detalle de póliza</h2>
+    <dl>
+      <dt>Número</dt>
+      <dd>{{ item.policyNumber }}</dd>
+      <dt>Cliente</dt>
+      <dd>{{ item.customerName }}</dd>
+      <dt>Estado</dt>
+      <dd>{{ item.status === 'ACTIVE' ? 'Activa' : 'Inactiva' }}</dd>
+    </dl>
+    <div class="actions">
+      @if (auth.isAdmin()) {
+        <a class="button-link" [routerLink]="['/policies', item.id, 'edit']">Editar</a>
+      }
+      <a class="button-link secondary" routerLink="/policies">Volver a la lista</a>
+    </div>
+  </section>
+}
