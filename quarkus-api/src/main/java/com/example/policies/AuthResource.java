@@ -52,12 +52,14 @@ public class AuthResource {
 
         String token = Jwt.issuer("policies-api")
                 .upn(request.username())
+                // Adds the user's role as a JWT groups claim for @RolesAllowed checks.
                 .groups(Set.of(credentials[1]))
                 .expiresIn(Duration.ofMinutes(tokenMinutes))
                 .sign();
         return new TokenResponse(token, "Bearer", tokenMinutes * 60);
     }
 
+    // Compares the configured and submitted passwords in constant time; it does not verify JWT signatures.
     private static boolean matches(String expected, String actual) {
         return MessageDigest.isEqual(
                 expected.getBytes(StandardCharsets.UTF_8),

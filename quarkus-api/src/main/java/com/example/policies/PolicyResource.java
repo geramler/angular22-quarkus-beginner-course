@@ -21,7 +21,9 @@ import java.util.List;
 
 @Path("/api/policies")
 @Tag(name = "Policies")
+// Documents that policy endpoints require the bearerAuth scheme in OpenAPI.
 @SecurityRequirement(name = "bearerAuth")
+// Allows either role to access these endpoints; write operations apply stricter rules.
 @RolesAllowed({"USER", "ADMIN"})
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
@@ -39,6 +41,7 @@ public class PolicyResource {
 
     @POST
     @RolesAllowed("ADMIN")
+    // Keeps the policy insert within a database transaction.
     @Transactional
     public Response create(PolicyRequest request) {
         Policy policy = new Policy();

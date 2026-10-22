@@ -7,6 +7,7 @@ import org.eclipse.microprofile.openapi.annotations.enums.SecuritySchemeType;
 import org.eclipse.microprofile.openapi.annotations.info.Info;
 import org.eclipse.microprofile.openapi.annotations.security.SecurityScheme;
 
+/** Configures the REST API root path and its OpenAPI metadata and JWT security scheme. */
 @ApplicationPath("/")
 @OpenAPIDefinition(info = @Info(title = "Policies API", version = "0.0.1"))
 @SecurityScheme(
