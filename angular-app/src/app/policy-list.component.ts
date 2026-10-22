@@ -6,7 +6,9 @@ import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-policy-list',
+  // Permite usar este componente sin declararlo en un NgModule.
   standalone: true,
+  // Importaciones disponibles en el template; RouterLink se usa en los enlaces de pólizas.
   imports: [RouterLink],
   template: `
     <section aria-label="Pólizas registradas">
@@ -20,6 +22,7 @@ import { AuthService } from './auth.service';
         <div class="filters">
           <label>
             Buscar
+            <!-- [value] muestra el texto actual; (input) pasa lo escrito a setText para actualizar el filtro. -->
             <input
               type="search"
               placeholder="Número o cliente"
@@ -29,6 +32,7 @@ import { AuthService } from './auth.service';
           </label>
           <label>
             Estado
+            <!-- $any permite leer el valor seleccionado del evento y pasarlo a setStatus. -->
             <select [value]="filter().status" (change)="setStatus($any($event.target).value)">
               <option value="ALL">Todas</option>
               <option value="ACTIVE">Activas</option>
@@ -59,6 +63,7 @@ import { AuthService } from './auth.service';
                       {{ policy.status === 'ACTIVE' ? 'Activa' : 'Inactiva' }}
                     </span>
                   </td>
+                  <!-- Todos pueden ver la póliza; solo los administradores pueden editarla o eliminarla. -->
                   <td class="actions">
                     <a class="button-link secondary" [routerLink]="['/policies', policy.id]">Ver</a>
                     @if (auth.isAdmin()) {
@@ -108,6 +113,7 @@ export class PolicyListComponent implements OnInit {
   }
 
   setText(text: string): void {
+    // Conserva los demás campos del filtro y reemplaza únicamente el texto.
     this.filter.update((filter) => ({ ...filter, text }));
   }
 
@@ -115,11 +121,13 @@ export class PolicyListComponent implements OnInit {
     this.filter.update((filter) => ({ ...filter, status }));
   }
 
+  // Obtiene las pólizas de la API y actualiza los datos, el estado de carga o el error.
   loadPolicies(): void {
     this.loading.set(true);
     this.error.set('');
 
     this.policyService.getPolicies().subscribe({
+      // Al recibir las pólizas, las guarda y finaliza el estado de carga.
       next: (policies) => {
         this.policies.set(policies);
         this.loading.set(false);
